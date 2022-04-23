@@ -1,0 +1,13 @@
+version: "3.3"
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: unless-stopped
+    ports:
+      - 5672:5672
+      - 15672:15672
+  echo:
+    depends_on:
+      - rabbitmq
+    build: .
+    restart: unless-stopped
