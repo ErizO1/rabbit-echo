@@ -47,7 +47,7 @@ connection.createChannel({
             log.L(`Received Message: ${replyRouteDisplay} ${content}`)
 
             if (replyRoute) {
-                channel.sendToQueue(msg.properties.replyTo, content, { correlationId: msg.properties.correlationId })
+                channel.sendToQueue(msg.properties.replyTo, Buffer.from(content), { correlationId: msg.properties.correlationId })
             }
 
         }, { noAck: true })
